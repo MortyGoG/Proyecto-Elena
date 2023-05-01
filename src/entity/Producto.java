@@ -9,14 +9,13 @@ public class Producto{
     float precio;
     boolean promocion;
     float precioPromocion;
-    Date fechaInicioPromocion;
-    Date fechaTerminoPromocion;
+    String fechaInicioPromocion;
+    String fechaTerminoPromocion;
     String beneficios;
 
     //Constructor
     public Producto(){
         
     } 
-
 
 }

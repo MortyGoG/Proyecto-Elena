@@ -1,21 +1,36 @@
 package src.gui;
 
 import javax.swing.*;
+import src.control.*;
+import src.data.BaseDatos;
+import src.Main;
 import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
 
 
-public class PantallaRegistrarProductos extends JPanel{
+public class PantallaRegistrarProductos extends JPanel implements ActionListener{
     private JButton botonComenzar;
     private JLabel  labelCodigo, labelDescripcion, labelPrecio, labelPromocion,
                     labelPreciopromocion, labelFechaInicioPromocion, labelFechaTerminoPromocion, labelBeneficios;
-    private JTextField  tfCodigo, tfDescripcion, tfPrecio, tfPromocion,
-                    tfPreciopromocion, tfFechaInicioPromocion, tfFechaTerminoPromocion, tfBeneficios;
-    
-    public PantallaRegistrarProductos(){
+    private JTextField  tfCodigo, tfDescripcion, tfPrecio, 
+                    tfPrecioPromocion, tfFechaInicioPromocion, tfFechaTerminoPromocion, tfBeneficios;
+    private JRadioButton trueButton, falseButton;
+    private ButtonGroup buttonGroup;
+
+    public BaseDatos instanciaa;
+
+    public PantallaRegistrarProductos(BaseDatos instancia) {
+        this.instanciaa = instancia;
+    }
+
+    public PantallaRegistrarProductos() {
+
+        //Panel para mostrar todo
         JPanel panelLabel = new JPanel(new BorderLayout());
         System.out.println("Mostrando RegisProdus");
 
-        //TEXTO
+        //Etiquetas de texto
         labelCodigo = new JLabel("Codigo: ");
         labelDescripcion = new JLabel("Descripcion: ");
         labelPrecio = new JLabel("Precio: ");
@@ -25,52 +40,138 @@ public class PantallaRegistrarProductos extends JPanel{
         labelFechaTerminoPromocion = new JLabel("Fecha de Terminacion de Promocion");
         labelBeneficios = new JLabel("Beneficios: ");
         botonComenzar = new JButton("¡¡Registrar Producto!!");
-        
-        //CAJAS DE TEXTO
+        botonComenzar.addActionListener(this);
+
+        //Botones
+        trueButton = new JRadioButton("Si");
+        falseButton = new JRadioButton("No");
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(trueButton);
+        buttonGroup.add(falseButton);
+
+        //Cajas de texto
         tfCodigo = new JTextField();
         tfDescripcion = new JTextField();
         tfPrecio = new JTextField();
-        tfPromocion = new JTextField();
-        tfPreciopromocion = new JTextField();
+        tfPrecioPromocion = new JTextField();
         tfFechaInicioPromocion = new JTextField();
         tfFechaTerminoPromocion = new JTextField();
         tfBeneficios = new JTextField();
 
-
+        //Agregamos etiquetas y cajas de texto a un panel para centrarlo
         panelLabel.setLayout(new BoxLayout(panelLabel, BoxLayout.Y_AXIS));
         panelLabel.add(labelCodigo);
         panelLabel.add(tfCodigo);
         panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
         panelLabel.add(labelDescripcion);
         panelLabel.add(tfDescripcion);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(labelPrecio);
         panelLabel.add(tfPrecio);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(labelPromocion);
-        panelLabel.add(tfPromocion);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(trueButton);
+        panelLabel.add(falseButton);
+        panelLabel.add(Box.createVerticalStrut(10)); 
         panelLabel.add(labelPreciopromocion);
-        panelLabel.add(tfPreciopromocion);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(tfPrecioPromocion);
+        panelLabel.add(Box.createVerticalStrut(10)); 
         panelLabel.add(labelFechaInicioPromocion);
-        panelLabel.add(labelFechaInicioPromocion);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(tfFechaInicioPromocion);
+        panelLabel.add(Box.createVerticalStrut(10)); 
         panelLabel.add(labelFechaTerminoPromocion);
         panelLabel.add(tfFechaTerminoPromocion);
-        panelLabel.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel.add(Box.createVerticalStrut(10)); 
         panelLabel.add(labelBeneficios);
         panelLabel.add(tfBeneficios);
-        panelLabel.add(Box.createVerticalStrut(10));
-        panelLabel.add(Box.createVerticalStrut(10));
+        panelLabel.add(Box.createVerticalStrut(20));
         panelLabel.add(botonComenzar);
 
-
+        //Añadimos este label al otro label en PantallaProductos
         add(panelLabel);
-
-
-
-
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    //Atributos
+    String codigo = "";
+    String descripcion = "";
+    float precio = 0;
+    boolean promocion = false;
+    float precioPromocion = 0;
+    String fechaInicioPromocion = "";
+    String fechaTerminoPromocion = "";
+    String beneficios = "";
+    String archivoCSV;
+
+    //Al colocar la info y registrar el producto tenemos que comprobar la info
+        if (e.getSource() == botonComenzar) {
+            //Codigo
+            if(tfCodigo.getText().isEmpty() || tfCodigo.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca el codigo del producto");
+            } else {
+                codigo = tfCodigo.getText();//Obtenemos codigo
+            }
+            
+            //Descripcion
+            if(tfDescripcion.getText().isEmpty() || tfDescripcion.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca la descripcion del producto");
+            } else {
+                descripcion = tfDescripcion.getText();//Obtenemos descripcion
+            }
+            
+            //Precio
+            if(tfPrecio.getText().isEmpty() || tfPrecio.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca el precio del producto");
+            } else {
+                precio = Float.parseFloat(tfPrecio.getText());//Obtenemos precio
+            }
+            
+            //PrecioPromocion
+            if(tfPrecioPromocion.getText().isEmpty() || tfPrecioPromocion.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca el precio de promocion del producto");
+            } else {
+                precioPromocion = Float.parseFloat(tfPrecioPromocion.getText());//Obtenemos descripcion
+            }
+            
+            //Fecha Inicio Promocion
+            if(tfFechaInicioPromocion.getText().isEmpty() || tfFechaInicioPromocion.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca la fecha de inicio de la promocion");
+            } else {
+                fechaInicioPromocion = tfFechaInicioPromocion.getText();//Obtenemos Fecha inicio promo
+            }
+
+            //Fecha Termina Promocion
+            if(tfFechaTerminoPromocion.getText().isEmpty() || tfFechaTerminoPromocion.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca la fecha de terminacion de la promocion");
+            } else {
+                fechaTerminoPromocion = tfFechaTerminoPromocion.getText();//Obtenemos Fecha Termino Promo
+            }
+
+            //Beneficios
+            if(tfBeneficios.getText().isEmpty() || tfBeneficios.getText() == null){
+                JOptionPane.showMessageDialog(null, "Coloca los beneficios del producto");
+            } else {
+                beneficios = tfBeneficios.getText();//Obtenemos beneficios
+            }
+
+            //BD archivoCSV
+            archivoCSV = "src\\data\\producto.csv";
+
+            //Mandamos a llamar el
+            if( !tfCodigo.getText().isEmpty() || tfCodigo.getText() != null || !tfDescripcion.getText().isEmpty() || tfDescripcion.getText() != null || !tfPrecio.getText().isEmpty() || tfPrecio.getText() != null || !tfPrecioPromocion.getText().isEmpty() || tfPrecioPromocion.getText() != null || !tfFechaInicioPromocion.getText().isEmpty() || tfFechaInicioPromocion.getText() != null || !tfFechaTerminoPromocion.getText().isEmpty() || tfFechaTerminoPromocion.getText() != null || !tfBeneficios.getText().isEmpty() || tfBeneficios.getText() != null){
+                try {
+                    RegistrarProductos RegPro = new RegistrarProductos();
+                    RegPro.RegistrarProducto(codigo, descripcion, precio, promocion,
+                                             precioPromocion, fechaInicioPromocion, fechaTerminoPromocion
+                                             , beneficios,  archivoCSV);
+                    JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                    
+                } catch (IOException e1) {
+                    System.out.println("Eror en registrar el producto");
+                }
+            }
+
+        }
+    }
 }

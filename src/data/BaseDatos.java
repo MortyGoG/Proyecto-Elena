@@ -5,18 +5,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class BaseDatos extends Exception {
-    
+    public String archivoCSV;
+
+    public BaseDatos(String archivoCSV){
+        this.archivoCSV = archivoCSV;
+    }
+
     public void CreateBD(){
         try {
-            String archivoCSV = "src\\data\\datos.csv";
             File archivoComprobar = new File(archivoCSV);
             if(archivoComprobar.exists()){
                 System.out.println("Archivo CSV existente");
             }else {
                 FileWriter archivo = new FileWriter(archivoCSV);
-                PrintWriter escritor = new PrintWriter(archivo);
-                escritor.println("0");
-                escritor.close();
+                // PrintWriter escritor = new PrintWriter(archivo);
+                // escritor.close();
                 System.out.println("Archivo CSV creado correctamente");
             }
 
@@ -25,4 +28,8 @@ public class BaseDatos extends Exception {
             e.printStackTrace();
         }
     }
+    public String getArchivoCSV() {
+        return archivoCSV;
+    }
+
 }

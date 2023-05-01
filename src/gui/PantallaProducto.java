@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class PantallaProducto implements ActionListener{
 
@@ -17,10 +16,12 @@ public class PantallaProducto implements ActionListener{
     private JFrame frameProductos;
 
     public PantallaProducto() {
+        //panel y cardlayout para ventanas en la misma
         panelPrincipal = new JPanel();
         cardLayout = new CardLayout();
         panelPrincipal.setLayout(cardLayout);
 
+        //Ventanas a mostrar en la misma por CardLayout
         JPanel ventana0 = new JPanel();
         PantallaRegistrarProductos ventana1 = new PantallaRegistrarProductos();
         PantallaModificarProductos ventana2 = new PantallaModificarProductos();
@@ -29,7 +30,7 @@ public class PantallaProducto implements ActionListener{
 
 
         // Agregar las ventanas al panel principal
-        panelPrincipal.add(ventana0, "ventana1");
+        panelPrincipal.add(ventana0, "ventana0");
         panelPrincipal.add(ventana1, "ventana1");
         panelPrincipal.add(ventana2, "ventana2");
         panelPrincipal.add(ventana3, "ventana3");
@@ -44,13 +45,13 @@ public class PantallaProducto implements ActionListener{
         botonModificarProducto.addActionListener(this);
         botonBorrarProducto.addActionListener(this);
 
-        // Agregar los botones a un panel secundario
+        // Agregar los botones a un panel secundario (panelBotones)
         JPanel panelBotones = new JPanel();
         panelBotones.add(botonRegistrarProducto);
         panelBotones.add(botonModificarProducto);
         panelBotones.add(botonBorrarProducto);      
         
-        //Ventana ProductoCRUD  
+        //Ventana Producto CRUD  
         frameProductos = new JFrame("Proyecto Elena v1.0");
         frameProductos.add(panelBotones, "North");
         frameProductos.getContentPane().add(panelPrincipal);
@@ -62,6 +63,7 @@ public class PantallaProducto implements ActionListener{
         frameProductos.setVisible(true);
     }
 
+        //Eventos de los botones para cambiar de ventana
         @Override
         public void actionPerformed(ActionEvent e) {
         if (e.getSource() == botonRegistrarProducto) {
