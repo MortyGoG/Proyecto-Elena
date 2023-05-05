@@ -12,42 +12,77 @@ public class PantallaMenu implements ActionListener{
     private JFrame frame;
 
     public PantallaMenu() {
-        //Botones del Menu
-        botonPantallaProducto = new JButton("Operaciones con Productos");
+
+        //BotonProductos
+        botonPantallaProducto = new JButton();
         botonPantallaProducto.setPreferredSize(new Dimension(200, 50));
-        botonPantallaCliente = new JButton("Operaciones con Clientes");
-        botonPantallaCliente.setPreferredSize(new Dimension(200, 50));
-        botonUnknown = new JButton("Otra Opcion");
-        botonUnknown.setPreferredSize(new Dimension(200, 50));
-        
+        botonPantallaProducto.setBorder(BorderFactory.createEmptyBorder());
+        ImageIcon imgBoton1 = new ImageIcon("src\\gui\\boton1.png");
+        botonPantallaProducto.setIcon(imgBoton1);
+        botonPantallaProducto.setHorizontalTextPosition(JButton.CENTER);
+        botonPantallaProducto.setVerticalTextPosition(JButton.CENTER);
         botonPantallaProducto.addActionListener(this);
+
+        //BotonClientes
+        botonPantallaCliente = new JButton();
+        botonPantallaCliente.setPreferredSize(new Dimension(200, 50));
+        botonPantallaCliente.setBorder(BorderFactory.createEmptyBorder());
+        ImageIcon imgBoton2 = new ImageIcon("src\\gui\\boton2.png");
+        botonPantallaCliente.setIcon(imgBoton2);
+        botonPantallaCliente.setHorizontalTextPosition(JButton.CENTER);
+        botonPantallaCliente.setVerticalTextPosition(JButton.CENTER);
         botonPantallaCliente.addActionListener(this);
+
+        //OtroBoton
+        botonUnknown = new JButton();
+        botonUnknown.setPreferredSize(new Dimension(200, 50));
+        botonUnknown.setBorder(BorderFactory.createEmptyBorder());
+        ImageIcon imgBoton3 = new ImageIcon("src\\gui\\boton3.png");
+        botonUnknown.setIcon(imgBoton3);
+        botonUnknown.setHorizontalTextPosition(JButton.CENTER);
+        botonUnknown.setVerticalTextPosition(JButton.CENTER);
         botonUnknown.addActionListener(this);
 
-        //Agregamos los botones
+        //Panel Botones
         JPanel panelBoton = new JPanel();
-        panelBoton.add(Box.createVerticalStrut(100));
+        panelBoton.add(Box.createVerticalStrut(500));
         panelBoton.add(botonPantallaProducto);
-        panelBoton.add(Box.createVerticalStrut(20));
+        panelBoton.add(Box.createVerticalStrut(50));
         panelBoton.add(botonPantallaCliente);
-        panelBoton.add(Box.createVerticalStrut(20));
+        panelBoton.add(Box.createVerticalStrut(50));
         panelBoton.add(botonUnknown);
+        panelBoton.setOpaque(false);
 
-        //Ventana Menu    
-        //frame.add(panelBoton, "Center");
-        //a
+        //Panel Principal   
+        JPanel panelPrincipal = new JPanel();
+        OverlayLayout layout = new OverlayLayout(panelPrincipal);
+        panelPrincipal.setLayout(layout);        
+
+
+        //Panel Fondo
+        JPanel panel = new JPanel();
+        panel.setOpaque(true);
         // Agregar el panel de botones y el panel principal al frame
-        frame = new JFrame("Proyecto Elena v1.0");
-        frame.setPreferredSize(new Dimension(800, 600));
-        frame.setResizable(true);
-        frame.getContentPane().add(panelBoton);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        //Centrado de menu
-        frame.getContentPane().add(panelBoton);
+        ImageIcon imagenDeFondo = new ImageIcon("src\\gui\\fondo.jpg");
+        // Crea el JLabel con el ImageIcon y establece su posición y tamaño
+        JLabel fondo = new JLabel(imagenDeFondo);
+        fondo.setBounds(0, 0, imagenDeFondo.getIconWidth(), imagenDeFondo.getIconHeight());
+        // Agrega el JLabel al JPanel
+        panel.add(fondo);
+
+        //Agregamos Paneles     
+        panelPrincipal.add(panelBoton);   
+        panelPrincipal.add(panel);
         
+        //Creamos la Ventana        
+        frame = new JFrame("Proyecto Elena v1.0");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(800, 600));
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(true);
+        frame.getContentPane().add(panelPrincipal);
+        frame.setVisible(true);        
     }
 
     @Override

@@ -3,7 +3,6 @@ package src.gui;
 import javax.swing.*;
 import src.control.*;
 import src.data.BaseDatos;
-import src.Main;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -19,16 +18,16 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
     private ButtonGroup buttonGroup;
 
     public BaseDatos instanciaa;
-
-    public PantallaRegistrarProductos(BaseDatos instancia) {
-        this.instanciaa = instancia;
-    }
-
     public PantallaRegistrarProductos() {
 
         //Panel para mostrar todo
         JPanel panelLabel = new JPanel(new BorderLayout());
+        JPanel panelLabel2 = new JPanel(new BorderLayout());
+        panelLabel2.setPreferredSize(new Dimension(300, 50));
         System.out.println("Mostrando RegisProdus");
+        panelLabel.setOpaque(false);
+        panelLabel2.setOpaque(false);
+
 
         //Etiquetas de texto
         labelCodigo = new JLabel("Codigo: ");
@@ -85,10 +84,20 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         panelLabel.add(labelBeneficios);
         panelLabel.add(tfBeneficios);
         panelLabel.add(Box.createVerticalStrut(20));
-        panelLabel.add(botonComenzar);
+
+        panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.X_AXIS));
+        panelLabel2.add(Box.createHorizontalStrut(100));
+        panelLabel2.add(botonComenzar);
 
         //Añadimos este label al otro label en PantallaProductos
-        add(panelLabel);
+        JPanel panelVentana = new JPanel();
+        panelVentana.setOpaque(false); 
+        
+        BoxLayout boxLayout = new BoxLayout(panelVentana , BoxLayout.Y_AXIS);
+        panelVentana.setLayout(boxLayout);
+        panelVentana.add(panelLabel);
+        panelVentana.add(panelLabel2);
+        add(panelVentana);
     }
 
     @Override
@@ -158,20 +167,33 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
             //BD archivoCSV
             archivoCSV = "src\\data\\producto.csv";
 
-            //Mandamos a llamar el
-            if( !tfCodigo.getText().isEmpty() || tfCodigo.getText() != null || !tfDescripcion.getText().isEmpty() || tfDescripcion.getText() != null || !tfPrecio.getText().isEmpty() || tfPrecio.getText() != null || !tfPrecioPromocion.getText().isEmpty() || tfPrecioPromocion.getText() != null || !tfFechaInicioPromocion.getText().isEmpty() || tfFechaInicioPromocion.getText() != null || !tfFechaTerminoPromocion.getText().isEmpty() || tfFechaTerminoPromocion.getText() != null || !tfBeneficios.getText().isEmpty() || tfBeneficios.getText() != null){
+            //Registra Producto si se llenaron los campos
+            if( !tfCodigo.getText().isEmpty() && tfCodigo.getText() != null && !tfDescripcion.getText().isEmpty() 
+            && tfDescripcion.getText() != null && !tfPrecio.getText().isEmpty() && tfPrecio.getText() != null 
+            && !tfPrecioPromocion.getText().isEmpty() && tfPrecioPromocion.getText() != null 
+            && !tfFechaInicioPromocion.getText().isEmpty() && tfFechaInicioPromocion.getText() != null 
+            && !tfFechaTerminoPromocion.getText().isEmpty() && tfFechaTerminoPromocion.getText() != null 
+            && !tfBeneficios.getText().isEmpty() && tfBeneficios.getText() != null){
                 try {
                     RegistrarProductos RegPro = new RegistrarProductos();
                     RegPro.RegistrarProducto(codigo, descripcion, precio, promocion,
                                              precioPromocion, fechaInicioPromocion, fechaTerminoPromocion
                                              , beneficios,  archivoCSV);
                     JOptionPane.showMessageDialog(null, "Registro Exitoso");
+
+                    //Limpiamos
+                    tfCodigo.setText("");
+                    tfDescripcion.setText("");
+                    tfPrecio.setText("");
+                    tfPrecioPromocion.setText("");
+                    tfFechaInicioPromocion.setText("");
+                    tfFechaTerminoPromocion.setText("");
+                    tfBeneficios.setText("");
                     
                 } catch (IOException e1) {
                     System.out.println("Eror en registrar el producto");
                 }
             }
-
         }
     }
 }
