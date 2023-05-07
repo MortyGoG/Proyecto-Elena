@@ -47,6 +47,9 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         buttonGroup = new ButtonGroup();
         buttonGroup.add(trueButton);
         buttonGroup.add(falseButton);
+        trueButton.setOpaque(false);
+        falseButton.setOpaque(false);
+
 
         //Cajas de texto
         tfCodigo = new JTextField();
@@ -179,8 +182,6 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
                     RegPro.RegistrarProducto(codigo, descripcion, precio, promocion,
                                              precioPromocion, fechaInicioPromocion, fechaTerminoPromocion
                                              , beneficios,  archivoCSV);
-                    JOptionPane.showMessageDialog(null, "Registro Exitoso");
-
                     //Limpiamos
                     tfCodigo.setText("");
                     tfDescripcion.setText("");

@@ -1,7 +1,5 @@
 package src.entity;
 
-import java.util.Date;
-
 public class Producto{
     //Atributos
     String codigo;

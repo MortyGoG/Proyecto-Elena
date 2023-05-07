@@ -17,7 +17,7 @@ public class MostrarProductos {
                 String codigo = data[0]; // asumiendo que el codigo se encuentra en la primera columna
 
                 if (codigo.equals(codigoBuscado)) {
-                    // coincidencia encontrada, mostrar el resto de datos de la misma fila
+                    // coincidencia encontrada mostrar el resto de datos de la misma fila
                     String descripcion = data[1];
                     String precio = data[2];
                     String promocion = data[3];
@@ -26,13 +26,14 @@ public class MostrarProductos {
                     String fechaTerminoPromocion = data[6];
                     String beneficios = data[7];
                     return  "Codigo: " + codigo + 
-                            ", Descripcion: " + descripcion + 
-                            ", Precio: " + precio + 
-                            ", Promocion: " + promocion +
-                            ", Precio Promocion: " + precioPromocion +
-                            ", Fecha Inicio Promocion: " + fechaInicioPromocion +
-                            ", Fecha Termino Promocion: " + fechaTerminoPromocion +
-                            ", Beneficios: " + beneficios;
+                            "\nDescripcion: " + descripcion + 
+                            "\nPrecio: " + precio + 
+                            "\nPromocion: " + promocion +
+                            "\nPrecio Promocion: " + precioPromocion +
+                            "\nFecha Inicio Promocion: " + fechaInicioPromocion +
+                            "\nFecha Termino Promocion: " + fechaTerminoPromocion +
+                            "\nBeneficios: " + beneficios;
+
                 }
             }
 

@@ -2,14 +2,12 @@ package src.gui;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -150,7 +148,7 @@ public class PantallaProducto implements ActionListener{
         // frameProductos.add(panelFoterPanelOL, BorderLayout.SOUTH);
         // frameProductos.getContentPane().add(panelPrinciOL);
         frameProductos.getContentPane().add(panelFondo);
-        frameProductos.setPreferredSize(new Dimension(800, 600));
+        frameProductos.setPreferredSize(new Dimension(800, 800));
         frameProductos.pack();
         frameProductos.setResizable(true);
         frameProductos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
