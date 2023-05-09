@@ -3,10 +3,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class BaseDatos extends Exception {
+public class BaseDatosClientes extends Exception {
     public String archivoCSV;
 
-    public BaseDatos(String archivoCSV){
+    public BaseDatosClientes(String archivoCSV){
         this.archivoCSV = archivoCSV;
     }
 

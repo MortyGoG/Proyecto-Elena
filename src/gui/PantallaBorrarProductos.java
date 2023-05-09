@@ -1,9 +1,15 @@
 package src.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.*;
 
 import src.control.BorrarProductos;
@@ -18,12 +24,26 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
     private String texto;
 
     public PantallaBorrarProductos(){
-        //Interfaz
+
+        //Tipografia
+        //Labels
+        Font customFont = loadCustomFont("src\\gui\\undertale.otf");
+        float fontSize = 18; // Tamaño de la letra deseado
+        Font sizedFont = customFont.deriveFont(fontSize);
+        //TextField
+        Font fuente = new Font("Arial", Font.PLAIN, 20);  // Ejemplo: Arial, tamaño 20
+
+
         //Labels
         labelCodigo = new JLabel("Codigo: ");
+        labelCodigo.setForeground(Color.WHITE);
+        labelCodigo.setFont(sizedFont);
+
         //Text Fields
         tfCodigo = new JTextField();
-        tfCodigo.setPreferredSize(new Dimension(200, 30));
+        tfCodigo.setPreferredSize(new Dimension(170, 25));
+        tfCodigo.setFont(fuente);
+
         //Buttons
         botonComenzar = new JButton("Mostrar producto");
         botonComenzar.addActionListener(this);
@@ -49,8 +69,11 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         //Text Area Mostrar Producto
         labelBusqueda = new JTextArea();
         labelBusqueda.setEditable(false);
-        labelBusqueda.setPreferredSize(new Dimension(200, 250));
+        labelBusqueda.setPreferredSize(new Dimension(250, 400));
         JScrollPane scrollPane = new JScrollPane(labelBusqueda); //Para deslizar
+        Font font1 = labelBusqueda.getFont();
+        float newSize1 = font1.getSize() + 10; // Aumentar el tamaño en 5 puntos
+        labelBusqueda.setFont(font1.deriveFont(newSize1));
         
         //Panel Principal
         JPanel panelLabel0 = new JPanel(new BorderLayout());
@@ -58,14 +81,28 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         panelLabel0.add(panelLabel1);
         panelLabel0.add(panelLabel2);
         panelLabel0.add(scrollPane);
+        panelLabel0.add(Box.createVerticalStrut(20));
         panelLabel0.add(botonBorrar);
         panelLabel0.setOpaque(false);
         add(panelLabel0);//Agregamos el Panel
     }
 
+    private static Font loadCustomFont(String path) {
+        try {
+            // Cargar la tipografía desde el archivo OTF
+            File fontFile = new File(path);
+            return Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+            // En caso de error, devolver la fuente por defecto
+            return new JButton().getFont();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String codigo = "";
+        
     //Mostrar la coincidencia
         if (e.getSource() == botonComenzar) {
         //Codigo

@@ -1,11 +1,14 @@
 package src.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -31,12 +34,26 @@ public class PantallaModificarProductos extends JPanel implements ActionListener
     private ButtonGroup buttonGroup;
 
     public PantallaModificarProductos(){
-        //Interfaz
+        //Tipografia
+        //Labels
+        Font customFont = loadCustomFont("src\\gui\\undertale.otf");
+        float fontSize = 18; // Tamaño de la letra deseado
+        Font sizedFont = customFont.deriveFont(fontSize);
+        //TextField
+        Font fuente = new Font("Arial", Font.PLAIN, 20);  // Ejemplo: Arial, tamaño 20
+
         //Labels
         labelCodigoBuqueda = new JLabel("Codigo: ");
+        labelCodigoBuqueda.setForeground(Color.WHITE);
+        labelCodigoBuqueda.setFont(sizedFont);
+
+
         //Text Fields
         tfCodigoBusqueda = new JTextField();
-        tfCodigoBusqueda.setPreferredSize(new Dimension(200, 30));
+        tfCodigoBusqueda.setPreferredSize(new Dimension(170, 25));
+        tfCodigoBusqueda.setFont(fuente);
+
+        
         //Buttons
         botonBusqueda = new JButton("Mostrar Producto");
         botonBusqueda.addActionListener(this);
@@ -46,6 +63,7 @@ public class PantallaModificarProductos extends JPanel implements ActionListener
         panelLabel1.setLayout(new BoxLayout(panelLabel1, BoxLayout.X_AXIS));
         panelLabel1.add(labelCodigoBuqueda);
         panelLabel1.add(tfCodigoBusqueda);
+        panelLabel1.add(Box.createHorizontalStrut(10)); // espacio vertical
         panelLabel1.add(botonBusqueda);
         panelLabel1.setOpaque(false);
         
@@ -53,85 +71,162 @@ public class PantallaModificarProductos extends JPanel implements ActionListener
         JPanel panelLabel0 = new JPanel(new BorderLayout());
         panelLabel0.setLayout(new BoxLayout(panelLabel0, BoxLayout.Y_AXIS));
         panelLabel0.add(panelLabel1);
-        panelLabel0.add(Box.createVerticalStrut(50));
+        panelLabel0.add(Box.createVerticalStrut(30));
         panelLabel0.setOpaque(false);
-        //Agregamos el Panel
 
         //Modificar
         //Panel para mostrar todo
         panelLabel3 = new JPanel(new BorderLayout());
+        panelLabel3.setOpaque(false);
+
         panelLabel4 = new JPanel(new BorderLayout());
         panelLabel4.setPreferredSize(new Dimension(300, 25));
-        panelLabel3.setOpaque(false);
         panelLabel4.setOpaque(false);
 
         //Titulo
         JLabel label = new JLabel("                            Modificar Producto");
+        label.setForeground(Color.WHITE);
         Font font = new Font("Arial", Font.BOLD, 24); // Fuente con tamaño de 24 puntos y estilo negrita
         label.setFont(font);
 
+        /*---------------------------------Estilo---------------------------------*/
+
         //Etiquetas de texto
         labelCodigo = new JLabel("Codigo: ");
+        labelCodigo.setBorder(BorderFactory.createEmptyBorder());
+        labelCodigo.setBackground(Color.BLACK);
+        labelCodigo.setForeground(Color.WHITE);
+        labelCodigo.setFont(sizedFont);
+
         labelDescripcion = new JLabel("Descripcion: ");
+        labelDescripcion.setBorder(BorderFactory.createEmptyBorder());
+        labelDescripcion.setBackground(Color.BLACK);
+        labelDescripcion.setForeground(Color.WHITE);
+        labelDescripcion.setFont(sizedFont);
+
         labelPrecio = new JLabel("Precio: ");
+        labelPrecio.setBorder(BorderFactory.createEmptyBorder());
+        labelPrecio.setBackground(Color.BLACK);
+        labelPrecio.setForeground(Color.WHITE);
+        labelPrecio.setFont(sizedFont);
+        
         labelPromocion = new JLabel("Promocion: ");
+        labelPromocion.setBorder(BorderFactory.createEmptyBorder());
+        labelPromocion.setBackground(Color.BLACK);
+        labelPromocion.setForeground(Color.WHITE);
+        labelPromocion.setFont(sizedFont);
+        
         labelPreciopromocion = new JLabel("Precio por Promocion: ");
+        labelPreciopromocion.setBorder(BorderFactory.createEmptyBorder());
+        labelPreciopromocion.setBackground(Color.BLACK);
+        labelPreciopromocion.setForeground(Color.WHITE);
+        labelPreciopromocion.setFont(sizedFont);
+        
         labelFechaInicioPromocion = new JLabel("Fecha de Inicio de Promocion: ");
+        labelFechaInicioPromocion.setBorder(BorderFactory.createEmptyBorder());
+        labelFechaInicioPromocion.setBackground(Color.BLACK);
+        labelFechaInicioPromocion.setForeground(Color.WHITE);
+        labelFechaInicioPromocion.setFont(sizedFont);
+        
         labelFechaTerminoPromocion = new JLabel("Fecha de Terminacion de Promocion");
+        labelFechaTerminoPromocion.setBorder(BorderFactory.createEmptyBorder());
+        labelFechaTerminoPromocion.setBackground(Color.BLACK);
+        labelFechaTerminoPromocion.setForeground(Color.WHITE);
+        labelFechaTerminoPromocion.setFont(sizedFont);
+        
         labelBeneficios = new JLabel("Beneficios: ");
-        botonModificar = new JButton("¡¡Modificar Producto!!");
+        labelBeneficios.setBorder(BorderFactory.createEmptyBorder());
+        labelBeneficios.setBackground(Color.BLACK);
+        labelBeneficios.setForeground(Color.WHITE);
+        labelBeneficios.setFont(sizedFont);
+        
+        botonModificar = new JButton("¡¡Registrar Producto!!");
         botonModificar.addActionListener(this);
 
         //Botones
         trueButton = new JRadioButton("Si");
+        trueButton.setFont(sizedFont);
+        trueButton.setForeground(Color.WHITE);
+        trueButton.setOpaque(false);
+
         falseButton = new JRadioButton("No");
+        falseButton.setFont(sizedFont);
+        falseButton.setForeground(Color.WHITE);
+        falseButton.setOpaque(false);
+        falseButton.setSelected(true);
+
         buttonGroup = new ButtonGroup();
         buttonGroup.add(trueButton);
-        buttonGroup.add(falseButton);
-        trueButton.setOpaque(false);
-        falseButton.setOpaque(false);
+        buttonGroup.add(falseButton);     
 
 
         //Cajas de texto
         tfCodigo = new JTextField();
+        tfCodigo.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfCodigo.setFont(fuente);
+
         tfDescripcion = new JTextField();
+        tfDescripcion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfDescripcion.setFont(fuente);
+
         tfPrecio = new JTextField();
+        tfPrecio.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfPrecio.setFont(fuente);
+
         tfPrecioPromocion = new JTextField();
+        tfPrecioPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfPrecioPromocion.setFont(fuente);
+
         tfFechaInicioPromocion = new JTextField();
+        tfFechaInicioPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfFechaInicioPromocion.setFont(fuente);
+
         tfFechaTerminoPromocion = new JTextField();
+        tfFechaTerminoPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfFechaTerminoPromocion.setFont(fuente);
+
         tfBeneficios = new JTextField();
+        tfBeneficios.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfBeneficios.setFont(fuente);
 
         //Agregamos etiquetas y cajas de texto a un panel para centrarlo
         panelLabel3.setLayout(new BoxLayout(panelLabel3, BoxLayout.Y_AXIS));
-        panelLabel3.add(label);
         panelLabel3.add(labelCodigo);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfCodigo);
-        panelLabel3.add(Box.createVerticalStrut(10)); // espacio vertical
+        panelLabel3.add(Box.createVerticalStrut(30));
         panelLabel3.add(labelDescripcion);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfDescripcion);
-        panelLabel3.add(Box.createVerticalStrut(10));
+        panelLabel3.add(Box.createVerticalStrut(30));
         panelLabel3.add(labelPrecio);
-        panelLabel3.add(tfPrecio);
         panelLabel3.add(Box.createVerticalStrut(10));
+        panelLabel3.add(tfPrecio);
+        panelLabel3.add(Box.createVerticalStrut(30));
         panelLabel3.add(labelPromocion);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(trueButton);
         panelLabel3.add(falseButton);
-        panelLabel3.add(Box.createVerticalStrut(10)); 
+        panelLabel3.add(Box.createVerticalStrut(30)); 
         panelLabel3.add(labelPreciopromocion);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfPrecioPromocion);
-        panelLabel3.add(Box.createVerticalStrut(10)); 
+        panelLabel3.add(Box.createVerticalStrut(30)); 
         panelLabel3.add(labelFechaInicioPromocion);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfFechaInicioPromocion);
-        panelLabel3.add(Box.createVerticalStrut(10)); 
+        panelLabel3.add(Box.createVerticalStrut(30)); 
         panelLabel3.add(labelFechaTerminoPromocion);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfFechaTerminoPromocion);
-        panelLabel3.add(Box.createVerticalStrut(10)); 
+        panelLabel3.add(Box.createVerticalStrut(30)); 
         panelLabel3.add(labelBeneficios);
+        panelLabel3.add(Box.createVerticalStrut(10));
         panelLabel3.add(tfBeneficios);
-        panelLabel3.add(Box.createVerticalStrut(20));
+        panelLabel3.add(Box.createVerticalStrut(10));
 
         panelLabel4.setLayout(new BoxLayout(panelLabel4, BoxLayout.X_AXIS));
-        panelLabel4.add(Box.createHorizontalStrut(100));
+        //panelLabel4.add(Box.createVerticalStrut(10));
         panelLabel4.add(botonModificar);
 
         //Añadimos este label al otro label en PantallaProductos
@@ -146,6 +241,18 @@ public class PantallaModificarProductos extends JPanel implements ActionListener
 
         add(panelVentana);
         
+    }
+
+    private static Font loadCustomFont(String path) {
+        try {
+            // Cargar la tipografía desde el archivo OTF
+            File fontFile = new File(path);
+            return Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+            // En caso de error, devolver la fuente por defecto
+            return new JButton().getFont();
+        }
     }
 
     @Override
