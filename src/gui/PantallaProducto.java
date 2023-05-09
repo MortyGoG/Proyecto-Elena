@@ -34,6 +34,7 @@ public class PantallaProducto implements ActionListener{
     private JFrame frameProductos;
     
     public PantallaProducto() {
+
         //Panel y cardlayout para ventanas en la misma
         panelPrincipal = new JPanel();
         cardLayout = new CardLayout();
@@ -61,6 +62,7 @@ public class PantallaProducto implements ActionListener{
         panelPrincipal.add(ventana2, "ventana2");
         panelPrincipal.add(ventana3, "ventana3");
         panelPrincipal.add(ventana4, "ventana4");
+
 
         /*------------------------------Estilo------------------------------*/
         //Tipografia
