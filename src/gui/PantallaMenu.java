@@ -144,43 +144,24 @@ public class PantallaMenu implements ActionListener{
         panelBoton2.setOpaque(false);
 
 
-        //Panel Principal   
-        JPanel panelPrincipal = new JPanel(new BorderLayout());
-        OverlayLayout layout = new OverlayLayout(panelPrincipal);
-        panelPrincipal.setLayout(layout);
-        panelPrincipal.setOpaque(false);
-
-
         //Panel Botones Verticales
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
         panelBotones.add(panelBoton);
         panelBotones.add(panelBoton2);
-        panelBotones.setOpaque(false);        
-
-        //Panel Fondo
-        JPanel panel = new JPanel();
-        panel.setOpaque(true);
-        // Agregar el panel de botones y el panel principal al frame
-        ImageIcon imagenDeFondo = new ImageIcon("src\\gui\\fondo.jpg");
-        // Crea el JLabel con el ImageIcon y establece su posición y tamaño
-        JLabel fondo = new JLabel(imagenDeFondo);
-        fondo.setBounds(0, 0, imagenDeFondo.getIconWidth(), imagenDeFondo.getIconHeight());
-        // Agrega el JLabel al JPanel
-        panel.add(fondo);
-
-        //Agregamos Paneles     
-        panelPrincipal.add(panelBotones);
-        panelPrincipal.add(panel);
+        panelBotones.setOpaque(false);
         
         //Creamos la Ventana        
         frame = new JFrame("Proyecto Elena v1.0");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(800, 600));
+        frame.getContentPane().setBackground(Color.BLACK);
+        ImageIcon icono = new ImageIcon("src\\gui\\icono.png");
+        frame.setIconImage(icono.getImage());
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
-        frame.getContentPane().add(panelPrincipal);
+        frame.getContentPane().add(panelBotones);
         frame.setVisible(true);        
     }
 

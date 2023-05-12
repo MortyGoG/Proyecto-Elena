@@ -24,14 +24,13 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         //Panel para mostrar todo
         JPanel panelLabel = new JPanel(new BorderLayout());
         JPanel panelLabel2 = new JPanel(new BorderLayout());
-        panelLabel2.setPreferredSize(new Dimension(300, 50));
         System.out.println("Mostrando RegisProdus");
         panelLabel.setOpaque(false);
         panelLabel2.setOpaque(false);
 
         /*---------------------------------Estilo---------------------------------*/
         Font customFont = loadCustomFont("src\\gui\\undertale.otf");
-        float fontSize = 18; // Tamaño de la letra deseado
+        float fontSize = 12; // Tamaño de la letra deseado
         Font sizedFont = customFont.deriveFont(fontSize);
 
         //Etiquetas de texto
@@ -106,31 +105,31 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         //Cajas de texto
         Font fuente = new Font("Arial", Font.PLAIN, 20);  // Ejemplo: Arial, tamaño 20
         tfCodigo = new JTextField();
-        tfCodigo.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfCodigo.setPreferredSize(new java.awt.Dimension(150, 10));
         tfCodigo.setFont(fuente);
 
         tfDescripcion = new JTextField();
-        tfDescripcion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfDescripcion.setPreferredSize(new java.awt.Dimension(150, 10));
         tfDescripcion.setFont(fuente);
 
         tfPrecio = new JTextField();
-        tfPrecio.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfPrecio.setPreferredSize(new java.awt.Dimension(150, 10));
         tfPrecio.setFont(fuente);
 
         tfPrecioPromocion = new JTextField();
-        tfPrecioPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfPrecioPromocion.setPreferredSize(new java.awt.Dimension(150, 10));
         tfPrecioPromocion.setFont(fuente);
 
         tfFechaInicioPromocion = new JTextField();
-        tfFechaInicioPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfFechaInicioPromocion.setPreferredSize(new java.awt.Dimension(150, 10));
         tfFechaInicioPromocion.setFont(fuente);
 
         tfFechaTerminoPromocion = new JTextField();
-        tfFechaTerminoPromocion.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfFechaTerminoPromocion.setPreferredSize(new java.awt.Dimension(150, 10));
         tfFechaTerminoPromocion.setFont(fuente);
 
         tfBeneficios = new JTextField();
-        tfBeneficios.setPreferredSize(new java.awt.Dimension(150, 30));
+        tfBeneficios.setPreferredSize(new java.awt.Dimension(150, 10));
         tfBeneficios.setFont(fuente);
 
 
@@ -139,43 +138,44 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         panelLabel.add(labelCodigo);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfCodigo);
-        panelLabel.add(Box.createVerticalStrut(30));
+        panelLabel.add(Box.createVerticalStrut(20));
         panelLabel.add(labelDescripcion);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfDescripcion);
-        panelLabel.add(Box.createVerticalStrut(30));
+        panelLabel.add(Box.createVerticalStrut(20));
         panelLabel.add(labelPrecio);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfPrecio);
-        panelLabel.add(Box.createVerticalStrut(30));
+        panelLabel.add(Box.createVerticalStrut(20));
         panelLabel.add(labelPromocion);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(trueButton);
         panelLabel.add(falseButton);
-        panelLabel.add(Box.createVerticalStrut(30)); 
+        panelLabel.add(Box.createVerticalStrut(20)); 
         panelLabel.add(labelPreciopromocion);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfPrecioPromocion);
-        panelLabel.add(Box.createVerticalStrut(30)); 
+        panelLabel.add(Box.createVerticalStrut(20)); 
         panelLabel.add(labelFechaInicioPromocion);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfFechaInicioPromocion);
-        panelLabel.add(Box.createVerticalStrut(30)); 
+        panelLabel.add(Box.createVerticalStrut(20)); 
         panelLabel.add(labelFechaTerminoPromocion);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfFechaTerminoPromocion);
-        panelLabel.add(Box.createVerticalStrut(30)); 
+        panelLabel.add(Box.createVerticalStrut(20)); 
         panelLabel.add(labelBeneficios);
         panelLabel.add(Box.createVerticalStrut(10));
         panelLabel.add(tfBeneficios);
-        panelLabel.add(Box.createVerticalStrut(30));
+        panelLabel.add(Box.createVerticalStrut(10));
 
         panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.X_AXIS));
-        panelLabel2.add(Box.createHorizontalStrut(100));
+        panelLabel2.add(Box.createHorizontalStrut(200));
         panelLabel2.add(botonComenzar);
 
         //Añadimos este label al otro label en PantallaProductos
         JPanel panelVentana = new JPanel();
+        panelVentana.setPreferredSize(new Dimension(600, 600));
         panelVentana.setOpaque(false); 
         
         BoxLayout boxLayout = new BoxLayout(panelVentana , BoxLayout.Y_AXIS);
