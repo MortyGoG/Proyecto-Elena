@@ -15,22 +15,22 @@ import javax.swing.*;
 
 public class PantallaMenu implements ActionListener{
 
-    private JButton botonPantallaProducto, botonPantallaCliente, botonUnknown, botonUnknown2;
+    private JButton botonPantallaProducto, botonPantallaCliente, botonTestimonio, botonAlertarCumpleaños;
     private JFrame frame;
 
     public PantallaMenu() {
 
+        //Estilo Botones 1
+        Font customFont = loadCustomFont("src\\gui\\undertale.otf");
+        float fontSize = 30; // Tamaño de la letra deseado
+        Font sizedFont = customFont.deriveFont(fontSize);
         //BotonProductos
-        botonPantallaProducto = new JButton();
         botonPantallaProducto = new JButton("Productos");
         botonPantallaProducto.setBorder(BorderFactory.createEmptyBorder());
         botonPantallaProducto.setBackground(Color.BLACK);
         botonPantallaProducto.setForeground(Color.WHITE);
         botonPantallaProducto.setContentAreaFilled(false);
         botonPantallaProducto.setFocusPainted(false);
-        Font customFont = loadCustomFont("src\\gui\\undertale.otf");
-        float fontSize = 30; // Tamaño de la letra deseado
-        Font sizedFont = customFont.deriveFont(fontSize);
         botonPantallaProducto.setFont(sizedFont);
         botonPantallaProducto.addActionListener(this);
         botonPantallaProducto.addMouseListener(new MouseAdapter() {
@@ -45,33 +45,12 @@ public class PantallaMenu implements ActionListener{
             }
         });
 
-        // botonPantallaProducto.setPreferredSize(new Dimension(250, 50));
-        // botonPantallaProducto.setBorder(BorderFactory.createEmptyBorder());
-        // ImageIcon imgBoton1 = new ImageIcon("src\\gui\\boton1.png");
-        // ImageIcon hoverIcon = new ImageIcon("src\\gui\\boton1hover.png");
-        // botonPantallaProducto.setIcon(imgBoton1);
-        // botonPantallaProducto.setHorizontalTextPosition(JButton.CENTER);
-        // botonPantallaProducto.setVerticalTextPosition(JButton.CENTER);
-        // botonPantallaProducto.addActionListener(this);
-        // botonPantallaProducto.addMouseListener(new MouseAdapter() {
-        //     @Override
-        //     public void mouseEntered(MouseEvent e) {
-        //         botonPantallaProducto.setIcon(hoverIcon); // Cambiar la imagen al pasar el mouse
-        //     }
-
-        //     @Override
-        //     public void mouseExited(MouseEvent e) {
-        //         botonPantallaProducto.setIcon(imgBoton1); // Restaurar la imagen normal al salir del mouse
-        //     }
-        // });
-
         //BotonClientes
-        botonPantallaCliente = new JButton();
         botonPantallaCliente = new JButton("Clientes");
         botonPantallaCliente.setBorder(BorderFactory.createEmptyBorder());
         botonPantallaCliente.setBackground(Color.BLACK);
         botonPantallaCliente.setForeground(Color.WHITE);
-        botonPantallaProducto.setContentAreaFilled(false);
+        botonPantallaCliente.setContentAreaFilled(false);
         botonPantallaCliente.setFocusPainted(false);
         botonPantallaCliente.setFont(sizedFont);
         botonPantallaCliente.addActionListener(this);
@@ -87,45 +66,52 @@ public class PantallaMenu implements ActionListener{
             }
         });
 
-        // botonPantallaCliente.setPreferredSize(new Dimension(250, 50));
-        // botonPantallaCliente.setBorder(BorderFactory.createEmptyBorder());
-        // ImageIcon imgBoton2 = new ImageIcon("src\\gui\\boton2.png");
-        // ImageIcon hoverIcon2 = new ImageIcon("src\\gui\\boton2hover.png");
-        // botonPantallaCliente.setIcon(imgBoton2);
-        // botonPantallaCliente.setHorizontalTextPosition(JButton.CENTER);
-        // botonPantallaCliente.setVerticalTextPosition(JButton.CENTER);
-        // botonPantallaCliente.addActionListener(this);
-        // botonPantallaCliente.addMouseListener(new MouseAdapter() {
-        //     @Override
-        //     public void mouseEntered(MouseEvent e) {
-        //         botonPantallaCliente.setIcon(hoverIcon2); // Cambiar la imagen al pasar el mouse
-        //     }
+        //Estilo Botones 2
+        Font customFont2 = loadCustomFont("src\\gui\\undertale.otf");
+        float fontSize2 = 20; // Tamaño de la letra deseado
+        Font sizedFont2 = customFont2.deriveFont(fontSize2);
 
-        //     @Override
-        //     public void mouseExited(MouseEvent e) {
-        //         botonPantallaCliente.setIcon(imgBoton2); // Restaurar la imagen normal al salir del mouse
-        //     }
-        // });
+        //botonTestimonio
+        botonTestimonio = new JButton("Generar Testimonio");
+        botonTestimonio.setBorder(BorderFactory.createEmptyBorder());
+        botonTestimonio.setBackground(Color.BLACK);
+        botonTestimonio.setForeground(Color.WHITE);
+        botonTestimonio.setContentAreaFilled(false);
+        botonTestimonio.setFocusPainted(false);
+        botonTestimonio.setFont(sizedFont2);
+        botonTestimonio.addActionListener(this);
+        botonTestimonio.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonTestimonio.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
+            }
 
-        //OtroBoton
-        botonUnknown = new JButton();
-        botonUnknown.setPreferredSize(new Dimension(250, 50));
-        botonUnknown.setBorder(BorderFactory.createEmptyBorder());
-        ImageIcon imgBoton3 = new ImageIcon("src\\gui\\boton3.png");
-        botonUnknown.setIcon(imgBoton3);
-        botonUnknown.setHorizontalTextPosition(JButton.CENTER);
-        botonUnknown.setVerticalTextPosition(JButton.CENTER);
-        botonUnknown.addActionListener(this);
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonTestimonio.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
+            }
+        });
 
-        //OtroBoton 2
-        botonUnknown2 = new JButton();
-        botonUnknown2.setPreferredSize(new Dimension(250, 50));
-        botonUnknown2.setBorder(BorderFactory.createEmptyBorder());
-        ImageIcon imgBoton4 = new ImageIcon("src\\gui\\boton4.png");
-        botonUnknown2.setIcon(imgBoton4);
-        botonUnknown2.setHorizontalTextPosition(JButton.CENTER);
-        botonUnknown2.setVerticalTextPosition(JButton.CENTER);
-        botonUnknown2.addActionListener(this);
+        //Productos terminados
+        botonAlertarCumpleaños = new JButton("Alertar cumpleaños");
+        botonAlertarCumpleaños.setBorder(BorderFactory.createEmptyBorder());
+        botonAlertarCumpleaños.setBackground(Color.BLACK);
+        botonAlertarCumpleaños.setForeground(Color.WHITE);
+        botonAlertarCumpleaños.setContentAreaFilled(false);
+        botonAlertarCumpleaños.setFocusPainted(false);
+        botonAlertarCumpleaños.setFont(sizedFont2);
+        botonAlertarCumpleaños.addActionListener(this);
+        botonAlertarCumpleaños.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                botonAlertarCumpleaños.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                botonAlertarCumpleaños.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
+            }
+        });
 
         //Panel Botones 1
         JPanel panelBoton = new JPanel(new BorderLayout());
@@ -138,9 +124,9 @@ public class PantallaMenu implements ActionListener{
         //Panel Botones 2
         JPanel panelBoton2 = new JPanel(new BorderLayout());
         panelBoton2.setLayout(new BoxLayout(panelBoton2, BoxLayout.X_AXIS));
-        panelBoton2.add(botonUnknown);
+        panelBoton2.add(botonTestimonio);
         panelBoton2.add(Box.createHorizontalStrut(70));
-        panelBoton2.add(botonUnknown2);
+        panelBoton2.add(botonAlertarCumpleaños);
         panelBoton2.setOpaque(false);
 
 
@@ -154,7 +140,7 @@ public class PantallaMenu implements ActionListener{
         //Creamos la Ventana        
         frame = new JFrame("Proyecto Elena v1.0");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setPreferredSize(new Dimension(900, 600));
         frame.getContentPane().setBackground(Color.BLACK);
         ImageIcon icono = new ImageIcon("src\\gui\\icono.png");
         frame.setIconImage(icono.getImage());
@@ -183,6 +169,27 @@ public class PantallaMenu implements ActionListener{
             frame.dispose();
             SwingUtilities.invokeLater(() -> {
                 new PantallaProducto();
+            });
+            
+        }
+        if (e.getSource() == botonPantallaCliente) {
+            frame.dispose();
+            SwingUtilities.invokeLater(() -> {
+                new PantallaCliente();
+            });
+            
+        }
+        if (e.getSource() == botonTestimonio) {
+            frame.dispose();
+            SwingUtilities.invokeLater(() -> {
+                new PantallaGenerarTestimonioClientes();
+            });
+            
+        }
+        if (e.getSource() == botonAlertarCumpleaños) {
+            frame.dispose();
+            SwingUtilities.invokeLater(() -> {
+                new PantallaAlertarCumpleaños();
             });
             
         }

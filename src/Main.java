@@ -2,16 +2,25 @@ package src;
 
 import src.data.*;
 import src.gui.*;
+
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args){ 
         //Comprobamos Base de Datos
-        BaseDatosProductos instancia = new BaseDatosProductos("src\\data\\producto.csv");
-        instancia.CreateBD();
+        BaseDatosProductos instancia1 = new BaseDatosProductos("src\\data\\producto.csv");
+        instancia1.CreateBD();
 
         BaseDatosProductos instancia2 = new BaseDatosProductos("src\\data\\cliente.csv");
         instancia2.CreateBD();
+
+        BaseDatosProductos instancia3 = new BaseDatosProductos("src\\data\\testimonio.csv");
+        instancia3.CreateBD();
 
         //Iniciamos Ventana       
         SwingUtilities.invokeLater(() -> {

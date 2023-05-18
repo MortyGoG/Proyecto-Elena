@@ -21,19 +21,19 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.OverlayLayout;
 import javax.swing.SwingUtilities;
 
-public class PantallaProducto implements ActionListener{
+import src.control.*;
+
+public class PantallaAlertarCumpleaños implements ActionListener{
 
     private JPanel panelPrincipal;
     private CardLayout cardLayout;
-    private JButton botonRegistrarProducto, botonModificarProducto, botonBorrarProducto, botonMenu, botonMostrarProducto;
+    private JButton botonAlertarCumpleaños, botonMenu;
     private JFrame frameProductos;
     
-    public PantallaProducto() {
+    public PantallaAlertarCumpleaños() {
 
         /*------------------------------Estilo------------------------------*/
         //Tipografia
@@ -42,86 +42,23 @@ public class PantallaProducto implements ActionListener{
         Font sizedFont = customFont.deriveFont(fontSize);
 
         //Boton Registrar Productos
-        botonRegistrarProducto = new JButton("Registra un producto");
-        botonRegistrarProducto.setBorder(BorderFactory.createEmptyBorder());
-        botonRegistrarProducto.setBackground(Color.BLACK);
-        botonRegistrarProducto.setForeground(Color.WHITE);
-        botonRegistrarProducto.setContentAreaFilled(false);
-        botonRegistrarProducto.setFocusPainted(false);
-        botonRegistrarProducto.setFont(sizedFont);
-        botonRegistrarProducto.addActionListener(this);
-        botonRegistrarProducto.addMouseListener(new MouseAdapter() {
+        botonAlertarCumpleaños = new JButton("Alertas pendientes");
+        botonAlertarCumpleaños.setBorder(BorderFactory.createEmptyBorder());
+        botonAlertarCumpleaños.setBackground(Color.BLACK);
+        botonAlertarCumpleaños.setForeground(Color.WHITE);
+        botonAlertarCumpleaños.setContentAreaFilled(false);
+        botonAlertarCumpleaños.setFocusPainted(false);
+        botonAlertarCumpleaños.setFont(sizedFont);
+        botonAlertarCumpleaños.addActionListener(this);
+        botonAlertarCumpleaños.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                botonRegistrarProducto.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
+                botonAlertarCumpleaños.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                botonRegistrarProducto.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
-            }
-        });
-
-        //Boton Modificar Productos
-        botonModificarProducto = new JButton("Modifica un Productos");
-        botonModificarProducto.setBorder(BorderFactory.createEmptyBorder());
-        botonModificarProducto.setBackground(Color.BLACK);
-        botonModificarProducto.setForeground(Color.WHITE);
-        botonModificarProducto.setContentAreaFilled(false);
-        botonModificarProducto.setFocusPainted(false);
-        botonModificarProducto.setFont(sizedFont);
-        botonModificarProducto.addActionListener(this);
-        botonModificarProducto.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                botonModificarProducto.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                botonModificarProducto.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
-            }
-        });
-
-        //Boton Borrar Productos
-        botonBorrarProducto = new JButton("Borrar un Producto");   
-        botonBorrarProducto.setBorder(BorderFactory.createEmptyBorder());
-        botonBorrarProducto.setBackground(Color.BLACK);
-        botonBorrarProducto.setForeground(Color.WHITE);
-        botonBorrarProducto.setContentAreaFilled(false);
-        botonBorrarProducto.setFocusPainted(false);
-        botonBorrarProducto.setFont(sizedFont);
-        botonBorrarProducto.addActionListener(this);
-        botonBorrarProducto.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                botonBorrarProducto.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                botonBorrarProducto.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
-            }
-        });
-
-        //Boton Mostrar Productos
-        botonMostrarProducto = new JButton("Mostrar un Producto");   
-        botonMostrarProducto.setBorder(BorderFactory.createEmptyBorder());
-        botonMostrarProducto.setBackground(Color.BLACK);
-        botonMostrarProducto.setForeground(Color.WHITE);
-        botonMostrarProducto.setContentAreaFilled(false);
-        botonMostrarProducto.setFocusPainted(false);
-        botonMostrarProducto.setFont(sizedFont);
-        botonMostrarProducto.addActionListener(this);
-        botonMostrarProducto.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                botonMostrarProducto.setForeground(Color.YELLOW); // Cambiar la imagen al pasar el mouse
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                botonMostrarProducto.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
+                botonAlertarCumpleaños.setForeground(Color.WHITE); // Restaurar la imagen normal al salir del mouse
             }
         });
 
@@ -160,39 +97,17 @@ public class PantallaProducto implements ActionListener{
         panelPrincipal.repaint();
         panelPrincipal.setOpaque(false);
         
-
         //Ventanas a mostrar en la misma por CardLayout
-        JPanel ventana0 = new JPanel();
-        ventana0.setOpaque(false);
-        ventana0.setPreferredSize(new Dimension(1000, 600));
-        ventana0.revalidate();
-        ventana0.repaint();
-        PantallaRegistrarProductos ventana1 = new PantallaRegistrarProductos();
+        PantallaAlertar ventana1 = new PantallaAlertar();
         ventana1.setOpaque(false);
-        PantallaModificarProductos ventana2 = new PantallaModificarProductos();
-        ventana2.setOpaque(false);
-        PantallaBorrarProductos ventana3 = new PantallaBorrarProductos();
-        ventana3.setOpaque(false);
-        PantallaMostrarProductos ventana4 = new PantallaMostrarProductos();
-        ventana4.setOpaque(false);
 
         // Agregar las ventanas al panel principal
-        panelPrincipal.add(ventana0, "ventana0");
         panelPrincipal.add(ventana1, "ventana1");
-        panelPrincipal.add(ventana2, "ventana2");
-        panelPrincipal.add(ventana3, "ventana3");
-        panelPrincipal.add(ventana4, "ventana4");
 
         //Panel Botones
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.X_AXIS));
-        panelBotones.add(botonRegistrarProducto);
-        panelBotones.add(Box.createHorizontalStrut(35));
-        panelBotones.add(botonModificarProducto);
-        panelBotones.add(Box.createHorizontalStrut(35));
-        panelBotones.add(botonBorrarProducto);
-        panelBotones.add(Box.createHorizontalStrut(35));
-        panelBotones.add(botonMostrarProducto);
+        panelBotones.add(botonAlertarCumpleaños);
         panelBotones.setOpaque(false);
 
         //Panel Footer
@@ -247,15 +162,9 @@ public class PantallaProducto implements ActionListener{
         //Eventos de los botones para cambiar de ventana
         @Override
         public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == botonRegistrarProducto) {
+        if (e.getSource() == botonAlertarCumpleaños) {
             cardLayout.show(panelPrincipal, "ventana1");
             System.out.println("Mostrando ventana");
-        } else if (e.getSource() == botonModificarProducto) {
-            cardLayout.show(panelPrincipal, "ventana2");
-        } else if (e.getSource() == botonBorrarProducto) {
-            cardLayout.show(panelPrincipal, "ventana3");
-        } else if (e.getSource() == botonMostrarProducto) {
-            cardLayout.show(panelPrincipal, "ventana4");
         } else if (e.getSource() == botonMenu) {
             System.out.println("Cerrando Ventana");
             frameProductos.dispose();
