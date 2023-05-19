@@ -2,7 +2,6 @@ package src.gui;
 
 import javax.swing.*;
 import src.control.RegistrarTestimonios;
-import src.data.BaseDatosClientes;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -12,9 +11,6 @@ public class PantallaRegistrarTestimonios extends JPanel implements ActionListen
     private JButton botonRegistrar;
     private JLabel labelNombreCliente, labelFecha, labelComentario, labelProductoServicio;
     private JTextField tfNombreCliente, tfFecha, tfComentario, tfProductoServicio;
-
-    public BaseDatosClientes instanciaa;
-
     public PantallaRegistrarTestimonios() {
 
         // Panel para mostrar todo

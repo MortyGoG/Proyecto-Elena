@@ -2,7 +2,6 @@ package src.gui;
 
 import javax.swing.*;
 import src.control.RegistrarClientes;
-import src.data.BaseDatosClientes;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -15,8 +14,6 @@ public class PantallaRegistrarClientes extends JPanel implements ActionListener{
                     labelProductoComprado;
     private JTextField  tfNombreCliente, tfEmail, tfTelefono, 
                     tfFechaNacimiento, tfProductoComprado;
-
-    public BaseDatosClientes instanciaa;
     public PantallaRegistrarClientes() {
 
         //Panel para mostrar todo

@@ -2,7 +2,6 @@ package src.gui;
 
 import javax.swing.*;
 import src.control.*;
-import src.data.BaseDatosProductos;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -17,8 +16,6 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
                     tfPrecioPromocion, tfFechaInicioPromocion, tfFechaTerminoPromocion, tfBeneficios;
     private JRadioButton trueButton, falseButton;
     private ButtonGroup buttonGroup;
-
-    public BaseDatosProductos instanciaa;
     public PantallaRegistrarProductos() {
 
         //Panel para mostrar todo
@@ -273,6 +270,12 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
             && !tfBeneficios.getText().isEmpty() && tfBeneficios.getText() != null){
                 try {
                     RegistrarProductos RegPro = new RegistrarProductos();
+                    if(trueButton.isSelected() == true){
+                        promocion = true;
+                    } else if (falseButton.isSelected() == true){
+                        promocion = false;
+                    }
+
                     RegPro.RegistrarProducto(codigo, descripcion, precio, promocion,
                                              precioPromocion, fechaInicioPromocion, fechaTerminoPromocion
                                              , beneficios,  archivoCSV);
@@ -280,6 +283,7 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
                     tfCodigo.setText("");
                     tfDescripcion.setText("");
                     tfPrecio.setText("");
+                    falseButton.setSelected(true);
                     tfPrecioPromocion.setText("");
                     tfFechaInicioPromocion.setText("");
                     tfFechaTerminoPromocion.setText("");

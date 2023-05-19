@@ -1,6 +1,7 @@
 package src;
 
 import src.data.*;
+import src.entity.*;
 import src.gui.*;
 
 
@@ -9,14 +10,14 @@ import javax.swing.SwingUtilities;
 public class Main {
     public static void main(String[] args){ 
         //Comprobamos Base de Datos
-        BaseDatosProductos instancia1 = new BaseDatosProductos("src\\data\\producto.csv");
-        instancia1.CreateBD();
+        Cliente instanciaCliente = new Cliente("src\\data\\cliente.csv");
+        instanciaCliente.CreateBD();
 
-        BaseDatosProductos instancia2 = new BaseDatosProductos("src\\data\\cliente.csv");
-        instancia2.CreateBD();
+        Producto instanciaProducto = new Producto("src\\data\\producto.csv");
+        instanciaProducto.CreateBD();
 
-        BaseDatosProductos instancia3 = new BaseDatosProductos("src\\data\\testimonio.csv");
-        instancia3.CreateBD();
+        BaseDatosTestimonios instanciaTestimonio = new BaseDatosTestimonios("src\\data\\testimonio.csv");
+        instanciaTestimonio.CreateBD();
 
         //Iniciamos Ventana       
         SwingUtilities.invokeLater(() -> {
