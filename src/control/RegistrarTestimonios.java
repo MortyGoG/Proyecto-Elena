@@ -18,26 +18,26 @@ public class RegistrarTestimonios {
         String cvsSplitBy = ",";
         String archivoCSV = "src\\data\\testimonio.csv";
         String clienteCSV = "src\\data\\cliente.csv";
-
+        boolean clienteEncontrado = false;
         // Buscar nombreCliente repetido
         try (BufferedReader br = new BufferedReader(new FileReader(clienteCSV))) {
-
             while ((line = br.readLine()) != null) {
-
                 String[] data = line.split(cvsSplitBy);
                 String nombre = data[0]; // asumiendo que el nombreCliente se encuentra en la primera columna
 
                 if (nombre.equals(nombreCliente)) {
                     // coincidencia encontrada mostrar el resto de datos de la misma fila
-                    continue;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Cliente inexistente");
-                    return;
+                    clienteEncontrado = true;
+                    break;
                 }
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if (!clienteEncontrado) {
+            JOptionPane.showMessageDialog(null, "Cliente inexistente");
+            return;
         }
 
         // Crear un objeto FileWriter en modo append para agregar al archivo CSV

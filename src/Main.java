@@ -3,10 +3,6 @@ package src;
 import src.data.*;
 import src.gui.*;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.IOException;
-import java.io.InputStream;
 
 import javax.swing.SwingUtilities;
 

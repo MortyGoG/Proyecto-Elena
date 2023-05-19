@@ -1,7 +1,6 @@
 package src.gui;
 
 import javax.swing.*;
-import src.control.*;
 import src.control.RegistrarTestimonios;
 import src.data.BaseDatosClientes;
 import java.awt.*;
