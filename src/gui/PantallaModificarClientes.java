@@ -15,7 +15,6 @@ import java.io.IOException;
 import javax.swing.*;
 
 import src.control.ModificarClientes;
-import src.control.ModificarProductos;
 
 public class PantallaModificarClientes extends JPanel implements ActionListener {
     private JButton botonBusqueda, botonModificar;
@@ -23,8 +22,6 @@ public class PantallaModificarClientes extends JPanel implements ActionListener 
     private JLabel labelNombreBusqueda;
     private JTextField tfNombreBusqueda;
     private JPanel panelLabel0, panelLabel1;
-    private JTextArea labelBusqueda;
-    private String texto;
     // Modificar
     private JPanel panelLabel3, panelLabel4;
     private JLabel labelNombreCliente, labelEmail, labelTelefono, labelFechaNacimiento,
@@ -65,7 +62,7 @@ public class PantallaModificarClientes extends JPanel implements ActionListener 
         panelLabel1.setOpaque(false);
 
         // Panel Principal
-        JPanel panelLabel0 = new JPanel(new BorderLayout());
+        panelLabel0 = new JPanel(new BorderLayout());
         panelLabel0.setLayout(new BoxLayout(panelLabel0, BoxLayout.Y_AXIS));
         panelLabel0.add(panelLabel1);
         panelLabel0.add(Box.createVerticalStrut(30));

@@ -21,7 +21,7 @@ public class Producto{
         this.archivoCSV = archivoCSV;
     }
 
-    public void CreateBD(){
+    public void ValidarProducto(){
         FileWriter archivo = null;
         try {
             File archivoComprobar = new File(archivoCSV);

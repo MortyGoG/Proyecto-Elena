@@ -10,7 +10,7 @@ public class BaseDatosTestimonios extends Exception {
         this.archivoCSV = archivoCSV;
     }
 
-    public void CreateBD(){
+    public void ValidarBD(){
         FileWriter archivo = null;
         try {
             File archivoComprobar = new File(archivoCSV);

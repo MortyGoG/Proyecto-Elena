@@ -11,13 +11,13 @@ public class Main {
     public static void main(String[] args){ 
         //Comprobamos Base de Datos
         Cliente instanciaCliente = new Cliente("src\\data\\cliente.csv");
-        instanciaCliente.CreateBD();
+        instanciaCliente.ValidarCliente();
 
         Producto instanciaProducto = new Producto("src\\data\\producto.csv");
-        instanciaProducto.CreateBD();
+        instanciaProducto.ValidarProducto();
 
         BaseDatosTestimonios instanciaTestimonio = new BaseDatosTestimonios("src\\data\\testimonio.csv");
-        instanciaTestimonio.CreateBD();
+        instanciaTestimonio.ValidarBD();
 
         //Iniciamos Ventana       
         SwingUtilities.invokeLater(() -> {

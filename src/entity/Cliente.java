@@ -18,7 +18,7 @@ public class Cliente  extends Exception {
         this.archivoCSV = archivoCSV;
     }
 
-    public void CreateBD(){
+    public void ValidarCliente(){
         FileWriter archivo = null;
         try {
             File archivoComprobar = new File(archivoCSV);

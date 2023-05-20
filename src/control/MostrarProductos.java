@@ -2,12 +2,16 @@ package src.control;
 
 import java.io.*;
 
+import src.entity.Producto;
+
 public class MostrarProductos {
 
     public String MostrarProducto(String codigoBuscado){
         String archivoCSV = "src\\data\\producto.csv";
         String line = "";
         String cvsSplitBy = ",";
+        Producto instanciaCliente = new Producto("src\\data\\producto.csv");
+        instanciaCliente.ValidarProducto();
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 

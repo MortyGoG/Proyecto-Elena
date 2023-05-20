@@ -3,6 +3,8 @@ package src.control;
 import java.io.*;
 import javax.swing.JOptionPane;
 
+import src.entity.Producto;
+
 public class BorrarProductos {
     
     public void BorrarProducto(String codigoOriginal){
@@ -11,6 +13,9 @@ public class BorrarProductos {
         String line = "";
         String cvsSplitBy = ",";
         boolean bandera = false;
+
+        Producto instanciaCliente = new Producto("src\\data\\producto.csv");
+        instanciaCliente.ValidarProducto();
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 

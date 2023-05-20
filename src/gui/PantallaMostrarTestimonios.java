@@ -53,7 +53,7 @@ public class PantallaMostrarTestimonios extends JPanel implements ActionListener
         panelLabel1.setOpaque(false);
 
         //Panel Label 2 (Panel de espaciado)
-        JPanel panelLabel2 = new JPanel(new BorderLayout());
+        panelLabel2 = new JPanel(new BorderLayout());
         panelLabel2.setPreferredSize(new Dimension(350, 50));
         panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.Y_AXIS));
         panelLabel2.setOpaque(false);
@@ -70,7 +70,7 @@ public class PantallaMostrarTestimonios extends JPanel implements ActionListener
         labelBusqueda.setFont(font1.deriveFont(newSize1));
 
         //Panel Principal
-        JPanel panelLabel0 = new JPanel(new BorderLayout());
+        panelLabel0 = new JPanel(new BorderLayout());
         panelLabel0.setLayout(new BoxLayout(panelLabel0, BoxLayout.Y_AXIS));
         panelLabel0.add(panelLabel1);
         panelLabel0.add(panelLabel2);

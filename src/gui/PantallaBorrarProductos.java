@@ -16,7 +16,7 @@ import src.control.BorrarProductos;
 import src.control.MostrarProductos;
 
 public class PantallaBorrarProductos extends JPanel implements ActionListener{
-    private JButton botonComenzar, botonBorrar;
+    private JButton botonMostrarProducto, botonBorrar;
     private JLabel  labelCodigo;
     private JTextField  tfCodigo;
     private JPanel panelLabel0, panelLabel1, panelLabel2;
@@ -45,8 +45,8 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         tfCodigo.setFont(fuente);
 
         //Buttons
-        botonComenzar = new JButton("Mostrar producto");
-        botonComenzar.addActionListener(this);
+        botonMostrarProducto = new JButton("Mostrar producto");
+        botonMostrarProducto.addActionListener(this);
         botonBorrar = new JButton("Borrar Producto");
         botonBorrar.addActionListener(this);
 
@@ -57,11 +57,11 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         panelLabel1.add(labelCodigo);
         panelLabel1.add(tfCodigo);
         panelLabel1.add(Box.createHorizontalStrut(20));
-        panelLabel1.add(botonComenzar);
+        panelLabel1.add(botonMostrarProducto);
         panelLabel1.setOpaque(false);
 
         //Panel Label 2 (Panel de espaciado)
-        JPanel panelLabel2 = new JPanel(new BorderLayout());
+        panelLabel2 = new JPanel(new BorderLayout());
         panelLabel2.setPreferredSize(new Dimension(350, 50));
         panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.Y_AXIS));
         panelLabel2.setOpaque(false);
@@ -76,7 +76,7 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         labelBusqueda.setFont(font1.deriveFont(newSize1));
         
         //Panel Principal
-        JPanel panelLabel0 = new JPanel(new BorderLayout());
+        panelLabel0 = new JPanel(new BorderLayout());
         panelLabel0.setLayout(new BoxLayout(panelLabel0, BoxLayout.Y_AXIS));
         panelLabel0.add(panelLabel1);
         panelLabel0.add(panelLabel2);
@@ -104,7 +104,7 @@ public class PantallaBorrarProductos extends JPanel implements ActionListener{
         String codigo = "";
         
     //Mostrar la coincidencia
-        if (e.getSource() == botonComenzar) {
+        if (e.getSource() == botonMostrarProducto) {
         //Codigo
         if(tfCodigo.getText().isEmpty() || tfCodigo.getText() == null){
             JOptionPane.showMessageDialog(null, "Coloca el codigo del producto");

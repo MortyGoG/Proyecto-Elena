@@ -9,16 +9,17 @@ import java.io.*;
 
 
 public class PantallaRegistrarClientes extends JPanel implements ActionListener{
-    private JButton botonComenzar;
+    private JButton botonRegistrarCliente;
     private JLabel  labelNombreCliente, labelEmail, labelTelefono, labelFechaNacimiento,
                     labelProductoComprado;
     private JTextField  tfNombreCliente, tfEmail, tfTelefono, 
                     tfFechaNacimiento, tfProductoComprado;
+    private JPanel panelLabel, panelLabel2;
     public PantallaRegistrarClientes() {
 
         //Panel para mostrar todo
-        JPanel panelLabel = new JPanel(new BorderLayout());
-        JPanel panelLabel2 = new JPanel(new BorderLayout());
+        panelLabel = new JPanel(new BorderLayout());
+        panelLabel2 = new JPanel(new BorderLayout());
         panelLabel2.setPreferredSize(new Dimension(300, 50));
         System.out.println("Mostrando RegisCliente");
         panelLabel.setOpaque(false);
@@ -60,8 +61,8 @@ public class PantallaRegistrarClientes extends JPanel implements ActionListener{
         labelProductoComprado.setForeground(Color.WHITE);
         labelProductoComprado.setFont(sizedFont);
         
-        botonComenzar = new JButton("¡¡Registrar cliente!!");
-        botonComenzar.addActionListener(this); 
+        botonRegistrarCliente = new JButton("¡¡Registrar cliente!!");
+        botonRegistrarCliente.addActionListener(this); 
 
 
         //Cajas de texto
@@ -112,7 +113,7 @@ public class PantallaRegistrarClientes extends JPanel implements ActionListener{
 
         panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.X_AXIS));
         panelLabel2.add(Box.createHorizontalStrut(100));
-        panelLabel2.add(botonComenzar);
+        panelLabel2.add(botonRegistrarCliente);
 
         //Añadimos este label al otro label en PantallaProductos
         JPanel panelVentana = new JPanel();
@@ -147,7 +148,7 @@ public class PantallaRegistrarClientes extends JPanel implements ActionListener{
     String productoComprado = "";
 
     //Al colocar la info y registrar el cliente tenemos que comprobar la info
-        if (e.getSource() == botonComenzar) {
+        if (e.getSource() == botonRegistrarCliente) {
             //nombreCliente
             if(tfNombreCliente.getText().isEmpty() || tfNombreCliente.getText() == null){
                 JOptionPane.showMessageDialog(null, "Coloca el nombre del cliente");
@@ -182,9 +183,6 @@ public class PantallaRegistrarClientes extends JPanel implements ActionListener{
             } else {
                 productoComprado = tfProductoComprado.getText();//Obtenemos el producto comprado 
             }
-
-            //BD archivoCSV
-            //String archivoCSV = "src\\data\\cliente.csv";
 
             //Registra Producto si se llenaron los campos
             if( !tfNombreCliente.getText().isEmpty() && tfNombreCliente.getText() != null && !tfEmail.getText().isEmpty() 

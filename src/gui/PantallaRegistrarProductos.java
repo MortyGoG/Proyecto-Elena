@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 public class PantallaRegistrarProductos extends JPanel implements ActionListener{
-    private JButton botonComenzar;
+    private JButton botonRegistrarProducto;
     private JLabel  labelCodigo, labelDescripcion, labelPrecio, labelPromocion,
                     labelPreciopromocion, labelFechaInicioPromocion, labelFechaTerminoPromocion, labelBeneficios;
     private JTextField  tfCodigo, tfDescripcion, tfPrecio, 
@@ -79,8 +79,8 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
         labelBeneficios.setForeground(Color.WHITE);
         labelBeneficios.setFont(sizedFont);
         
-        botonComenzar = new JButton("¡¡Registrar Producto!!");
-        botonComenzar.addActionListener(this);
+        botonRegistrarProducto = new JButton("¡¡Registrar Producto!!");
+        botonRegistrarProducto.addActionListener(this);
 
         //Botones
         trueButton = new JRadioButton("Si");
@@ -168,7 +168,7 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
 
         panelLabel2.setLayout(new BoxLayout(panelLabel2, BoxLayout.X_AXIS));
         panelLabel2.add(Box.createHorizontalStrut(200));
-        panelLabel2.add(botonComenzar);
+        panelLabel2.add(botonRegistrarProducto);
 
         //Añadimos este label al otro label en PantallaProductos
         JPanel panelVentana = new JPanel();
@@ -205,10 +205,9 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
     String fechaInicioPromocion = "";
     String fechaTerminoPromocion = "";
     String beneficios = "";
-    String archivoCSV;
 
     //Al colocar la info y registrar el producto tenemos que comprobar la info
-        if (e.getSource() == botonComenzar) {
+        if (e.getSource() == botonRegistrarProducto) {
             //Codigo
             if(tfCodigo.getText().isEmpty() || tfCodigo.getText() == null){
                 JOptionPane.showMessageDialog(null, "Coloca el codigo del producto");
@@ -258,9 +257,6 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
                 beneficios = tfBeneficios.getText();//Obtenemos beneficios
             }
 
-            //BD archivoCSV
-            archivoCSV = "src\\data\\producto.csv";
-
             //Registra Producto si se llenaron los campos
             if( !tfCodigo.getText().isEmpty() && tfCodigo.getText() != null && !tfDescripcion.getText().isEmpty() 
             && tfDescripcion.getText() != null && !tfPrecio.getText().isEmpty() && tfPrecio.getText() != null 
@@ -278,7 +274,7 @@ public class PantallaRegistrarProductos extends JPanel implements ActionListener
 
                     RegPro.RegistrarProducto(codigo, descripcion, precio, promocion,
                                              precioPromocion, fechaInicioPromocion, fechaTerminoPromocion
-                                             , beneficios,  archivoCSV);
+                                             , beneficios);
                     //Limpiamos
                     tfCodigo.setText("");
                     tfDescripcion.setText("");

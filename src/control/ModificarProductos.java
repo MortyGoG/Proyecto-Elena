@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import src.entity.Producto;
+
 public class ModificarProductos {
     
     public void ModificarProducto(  String codigoBuscado,
@@ -22,6 +24,9 @@ public class ModificarProductos {
         String archivoCSV = "src\\data\\producto.csv";
         String line = "";
         String cvsSplitBy = ",";
+
+        Producto instanciaCliente = new Producto("src\\data\\producto.csv");
+        instanciaCliente.ValidarProducto();
         
         //Buscar codigo repetido
         if(!codigoBuscado.equals(codigoOriginal)){

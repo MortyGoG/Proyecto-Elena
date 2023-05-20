@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+
+import src.entity.*;
     
 public class RegistrarProductos {
     
@@ -16,11 +18,14 @@ public class RegistrarProductos {
                                     float precioPromocion,
                                     String fechaInicioPromocion,
                                     String fechaTerminoPromocion, 
-                                    String beneficios,
-                                    String archivoCSV) throws IOException {
+                                    String beneficios) throws IOException {
 
         String line = "";
         String cvsSplitBy = ",";
+        String archivoCSV = "src\\data\\cliente.csv";
+        
+        Producto instanciaCliente = new Producto("src\\data\\producto.csv");
+        instanciaCliente.ValidarProducto();
         
         //Buscar codigo repetido
             try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {

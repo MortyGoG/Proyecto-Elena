@@ -21,9 +21,8 @@ public class PantallaModificarProductos extends JPanel implements ActionListener
     //Busqueda
     private JLabel  labelCodigoBuqueda;
     private JTextField  tfCodigoBusqueda;
-    private JPanel panelLabel0, panelLabel1;
-    private JTextArea labelBusqueda;
-    private String texto;
+    private JPanel panelLabel1;
+    
     //Modificar
     private JPanel panelLabel3, panelLabel4; 
     private JLabel  labelCodigo, labelDescripcion, labelPrecio, labelPromocion,

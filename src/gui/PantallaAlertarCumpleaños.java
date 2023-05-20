@@ -24,8 +24,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import src.control.*;
-
 public class PantallaAlertarCumpleaños implements ActionListener{
 
     private JPanel panelPrincipal;

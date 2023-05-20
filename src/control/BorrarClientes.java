@@ -3,6 +3,8 @@ package src.control;
 import java.io.*;
 import javax.swing.JOptionPane;
 
+import src.entity.Cliente;
+
 public class BorrarClientes {
     
     public void BorrarCliente(String nombreCliente){
@@ -11,6 +13,8 @@ public class BorrarClientes {
         String line = "";
         String cvsSplitBy = ",";
         boolean bandera = false;
+        Cliente instanciaCliente = new Cliente("src\\data\\cliente.csv");
+        instanciaCliente.ValidarCliente();
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
 

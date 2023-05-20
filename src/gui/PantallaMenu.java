@@ -1,7 +1,6 @@
 package src.gui;
 
 import javax.swing.JFrame;
-import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

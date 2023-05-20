@@ -7,6 +7,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import src.entity.Cliente;
+
 public class RegistrarClientes {
 
     public void RegistrarCliente(String nombreCliente,
@@ -17,6 +19,9 @@ public class RegistrarClientes {
         String line = "";
         String cvsSplitBy = ",";
         String archivoCSV = "src\\data\\cliente.csv";
+
+        Cliente instanciaCliente = new Cliente("src\\data\\cliente.csv");
+        instanciaCliente.ValidarCliente();
 
         // Buscar nombreCliente repetido
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
